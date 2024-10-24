@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    #linkutili{
+        background-color: rgb(231, 228, 228);
+        border:1px solid black
+
+    }
+</style>
+
+</head>
+<body>
+<div id="linkutili">
+
+    <p>
+        1. sito dove imparo a programmare:
+        <a href="https://www.w3schools.com/html/default.asp" >W3School</a>
+   
+    </p>
+
+    <p>
+        2. sito dove guardo video:
+        <a href="https://www.youtube.com/">Youtube</a>
+    </p>
+
+    <p>
+        3. sito dove mi informo:
+        <a href="https://it.wikipedia.org/wiki/Pagina_principale">Wikipedia</a>
+    </p>
+
+    <p>
+        4. sito della mia scuola:
+        <a href="https://www.jcmaxwell.edu.it/">IIS JC Maxwell</a>
+    </p>
+
+    <p>
+        5. sito dove salvo i miei file scolastici:
+        <a href="https://drive.google.com/drive/quota">Google Drive</a>
+    </p>
+
+    <p>
+        6. sito di posta elettronica:
+        <a href="https://mail.google.com/mail/?authuser=0">Gmail</a>
+    </p>
+
+    <p>
+        7. sito dove carico i miei progetti:
+        <a href="https://github.com/">Github</a>
+    </p>
+
+    <p>
+        8. sito con cui esploro il mondo:
+        <a href="https://earth.google.com/web/?authuser=0">Google Earth</a>
+    </p>
+
+    <p>
+        9. sito che uso a scuola:
+        <a href="https://classroom.google.com/?authuser=0">Google Classroom</a>
+    </p>
+
+    <p>
+        10. sito del mio prof.:
+        <a href="https://www.marcopalladino.it/it/">Marco Palladino</a>
+    </p>
+
+
+</div>
+
+</body>
+</html>
