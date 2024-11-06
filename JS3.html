@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aforismi di Scienziati</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .aforisma {
+            margin-bottom: 20px;
+        }
+        button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 15px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #ffffff;
+            background-color: #323232;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #666;
+        }
+        button:hover {
+            background-color: #252525;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aforismi di Scienziati Famosi</h1>
+
+    <div class="aforisma">
+        <p id="aforisma1">"La scienza non è solo conoscenza, ma anche un modo di pensare." - Carl Sagan</p>
+        <button onclick="nascondiTesto('aforisma1')">Nascondi</button>
+    </div>
+
+    <div class="aforisma">
+        <p id="aforisma2">"La scienza è una disciplina che ci insegna a non credere in quello che vediamo." - Albert Einstein</p>
+        <button onclick="nascondiTesto('aforisma2')">Nascondi</button>
+    </div>
+
+    <div class="aforisma">
+        <p id="aforisma3">"Se vogliamo veramente comprendere l'universo, dobbiamo imparare a pensare in modo nuovo." - Albert Einstein</p>
+        <button onclick="nascondiTesto('aforisma3')">Nascondi</button>
+    </div>
+
+    <div class="aforisma">
+        <p id="aforisma4">"La natura è matematica, ed è per questo che la scienza può esplorare il mondo." - Galileo Galilei</p>
+        <button onclick="nascondiTesto('aforisma4')">Nascondi</button>
+    </div>
+
+    <div class="aforisma">
+        <p id="aforisma5">"L’immaginazione è più importante della conoscenza." - Albert Einstein</p>
+        <button onclick="nascondiTesto('aforisma5')">Nascondi</button>
+    </div>
+
+    <script>
+        function nascondiTesto(id) {
+            const testo = document.getElementById(id);
+            testo.style.display = "none"; 
+        }
+    </script>
+
+</body>
+</html>
