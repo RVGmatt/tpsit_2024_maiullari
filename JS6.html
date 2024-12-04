@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  #img{
+    display:none;
+  }
+  </style>
+</head>
+<body bgcolor="palladino">
+  <h1> Esercizio con il setInterval </h1>
+  <p id="fuori"></p>
+  <img id="img" src="https://omec.it/wp-content/uploads/2022/09/500l_01.png">
+<script>
+
+  const tempo=document.getElementById("fuori");
+  let n=3;
+  setInterval(time,1000);
+  function time(){
+    if(n>=0){
+        tempo.innerHTML=n;
+      n--;
+    }
+    if(n==-1){
+        document.getElementById("img").style.display="block";
+    }
+  }
+
+</script>
+</body>
+</html>
