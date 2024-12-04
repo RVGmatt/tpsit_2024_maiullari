@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body bgcolor="beige">
+  <h1> Esercizio con il setInterval </h1>
+  <p id="fuori"></p>
+
+<script>
+
+  const tempo=document.getElementById("fuori");
+  let n=0;
+  setInterval(time,300);
+  function time(){
+    tempo.innerHTML=n;
+    n++;
+  }
+
+</script>
+</body>
+</html>
