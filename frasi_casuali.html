@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Sintassi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Inserisci una frase</h2>
+        <form id="sentenceForm">
+            <input type="text" id="subject" placeholder="Soggetto" required>
+            <input type="text" id="verb" placeholder="Verbo" required>
+            <input type="text" id="complement" placeholder="Complemento" required>
+            <button type="submit">Genera Frase</button>
+        </form>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        document.getElementById("sentenceForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const subject = document.getElementById("subject").value;
+            const verb = document.getElementById("verb").value;
+            const complement = document.getElementById("complement").value;
+            document.getElementById("output").textContent = `${subject} ${verb} ${complement}.`;
+        });
+    </script>
+</body>
+</html>
