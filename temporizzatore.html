@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Div Mobili con Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            transition: top 0.5s linear, left 0.5s linear;
+        }
+        .blu { background-color: blue; }
+        .giallo { background-color: yellow; }
+    </style>
+</head>
+<body>
+
+<div id="divBlu" class="box blu"></div>
+<div id="divGiallo" class="box giallo"></div>
+
+<script>
+    function getRandomPosition() {
+        let maxX = window.innerWidth - 110; // 100px box + 10px margine
+        let maxY = window.innerHeight - 110;
+        let x = Math.floor(Math.random() * maxX);
+        let y = Math.floor(Math.random() * maxY);
+        return { x, y };
+    }
+
+    function moveDivs() {
+        let divBlu = document.getElementById("divBlu");
+        let divGiallo = document.getElementById("divGiallo");
+
+        let posBlu = getRandomPosition();
+        let posGiallo = getRandomPosition();
+
+        divBlu.style.left = posBlu.x + "px";
+        divBlu.style.top = posBlu.y + "px";
+
+        divGiallo.style.left = posGiallo.x + "px";
+        divGiallo.style.top = posGiallo.y + "px";
+
+        setTimeout(checkCollision, 600);
+    }
+
+    function checkCollision() {
+        let divBlu = document.getElementById("divBlu").getBoundingClientRect();
+        let divGiallo = document.getElementById("divGiallo").getBoundingClientRect();
+
+        if (
+            divBlu.left < divGiallo.right &&
+            divBlu.right > divGiallo.left &&
+            divBlu.top < divGiallo.bottom &&
+            divBlu.bottom > divGiallo.top
+        ) {
+            document.getElementById("divBlu").style.backgroundColor = "red";
+            document.getElementById("divGiallo").style.backgroundColor = "red";
+        } else {
+            document.getElementById("divBlu").style.backgroundColor = "blue";
+            document.getElementById("divGiallo").style.backgroundColor = "yellow";
+        }
+    }
+
+    setInterval(moveDivs, 2000); // Sposta i div ogni 2 secondi
+</script>
+
+</body>
+</html>
