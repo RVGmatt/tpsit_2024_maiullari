@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimento Quadrato</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+        }
+        .container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+        }
+        .square {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="square"></div>
+    </div>
+
+    <script>
+        let square = document.querySelector('.square');
+        let containerSize = 200;
+        let squareSize = 20;
+        let step = 10;
+        let positionX = 0, positionY = 0;
+        let direction = 'right';
+
+        function moveSquare() {
+            if (direction === 'right') {
+                positionX += step;
+                if (positionX >= containerSize - squareSize) direction = 'down';
+            } else if (direction === 'down') {
+                positionY += step;
+                if (positionY >= containerSize - squareSize) direction = 'left';
+            } else if (direction === 'left') {
+                positionX -= step;
+                if (positionX <= 0) direction = 'up';
+            } else if (direction === 'up') {
+                positionY -= step;
+                if (positionY <= 0) direction = 'right';
+            }
+            
+            square.style.left = positionX + 'px';
+            square.style.top = positionY + 'px';
+
+            setTimeout(moveSquare, 100);
+        }
+
+        moveSquare();
+    </script>
+</body>
+</html>
