@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1 Reaction Timer</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background-color: #111;
+      color: white;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 50px;
+    }
+    .lights {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .light {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: grey;
+    }
+    .red {
+      background-color: red;
+    }
+    .green {
+      background-color: green;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    #reactionTimes {
+      margin-top: 30px;
+      text-align: left;
+    }
+    #stats {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>F1 Reaction Timer</h1>
+  <div class="lights">
+    <div class="light" id="light1"></div>
+    <div class="light" id="light2"></div>
+    <div class="light" id="light3"></div>
+    <div class="light" id="light4"></div>
+    <div class="light" id="light5"></div>
+  </div>
+  <button id="startBtn">Start</button>
+  <p id="message"></p>
+  <div class="container">
+    <div id="reactionTimes">
+      <h2>Reaction Times (ms)</h2>
+      <ul id="timesList"></ul>
+    </div>
+    <div id="stats">
+      <h2>Statistics</h2>
+      <p>Total Average: <span id="totalAvg">0</span> ms</p>
+      <p>Last 5 Average: <span id="last5Avg">0</span> ms</p>
+    </div>
+  </div>
+
+  <script>
+    const lights = [
+      document.getElementById('light1'),
+      document.getElementById('light2'),
+      document.getElementById('light3'),
+      document.getElementById('light4'),
+      document.getElementById('light5')
+    ];
+    const startBtn = document.getElementById('startBtn');
+    const message = document.getElementById('message');
+    const timesList = document.getElementById('timesList');
+    const totalAvgEl = document.getElementById('totalAvg');
+    const last5AvgEl = document.getElementById('last5Avg');
+
+    let reactionTimes = [];
+    let greenTime = 0;
+    let waitingForReaction = false;
+
+    function resetLights() {
+      lights.forEach(light => {
+        light.classList.remove('red', 'green');
+      });
+    }
+
+    function lightUpReds() {
+      lights.forEach(light => light.classList.add('red'));
+    }
+
+    function turnGreen() {
+      resetLights();
+      lights.forEach(light => light.classList.add('green'));
+      greenTime = Date.now();
+      waitingForReaction = true;
+      message.textContent = 'GO! Press Space or Click!';
+    }
+
+    function updateStats() {
+      if (reactionTimes.length > 0) {
+        const totalAvg = Math.round(reactionTimes.reduce((a, b) => a + b) / reactionTimes.length);
+        totalAvgEl.textContent = totalAvg;
+
+        const last5 = reactionTimes.slice(-5);
+        const last5Avg = Math.round(last5.reduce((a, b) => a + b) / last5.length);
+        last5AvgEl.textContent = last5Avg;
+      }
+    }
+
+    function recordReaction() {
+      if (waitingForReaction) {
+        const reaction = Date.now() - greenTime;
+        reactionTimes.push(reaction);
+        const li = document.createElement('li');
+        li.textContent = `${reaction} ms`;
+        timesList.appendChild(li);
+        waitingForReaction = false;
+        message.textContent = 'Click Start to try again!';
+        updateStats();
+      }
+    }
+
+    startBtn.onclick = () => {
+      resetLights();
+      message.textContent = 'Wait for green...';
+      waitingForReaction = false;
+
+      lightUpReds();
+
+      const delay = Math.random() * 3000 + 2000; // between 2000ms and 5000ms
+      setTimeout(turnGreen, delay);
+    };
+
+    document.body.onclick = (e) => {
+      // Avoid triggering when clicking the Start button
+      if (e.target.id !== 'startBtn') {
+        recordReaction();
+      }
+    };
+
+    document.body.onkeydown = (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault(); // Prevent scrolling
+        recordReaction();
+      }
+    };
+  </script>
+</body>
+</html>
